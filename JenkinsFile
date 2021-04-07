@@ -1,0 +1,30 @@
+pipeline {
+   agent any
+   environment {
+      PATH="C:\Program Files\MATLAB\$PATH"
+   }
+   tools {
+       matlab 'MATLABR2020a'
+       matlab 'MATLABR2021a'
+   }
+ 
+    stages{
+     
+      
+       stage('Run MATLAB Tests'){
+            steps
+            {
+               runMATLABTests(
+                               //sourceFolder: ["/Users/sjayagop/Desktop/src","/Users/sjayagop/Desktop/test"],
+                               selectByTag:'SystemTest',
+                               selectByFolder:['test/functionbased'],
+                               testResultsTAP: 'new-results/results.tap',
+                               testResultsJUnit: 'new-results/results.xml',
+                               codeCoverageCobertura: 'new-coverage/coverage.xml',
+                               modelCoverageCobertura: 'new-coverage/coverage.xml')
+            }  
+        }
+    }        
+    
+}
+  
