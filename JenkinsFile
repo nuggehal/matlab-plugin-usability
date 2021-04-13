@@ -15,6 +15,7 @@ pipeline {
             steps
             {
                runMATLABTests(
+                               //Add source path specific to your local host
                                //sourceFolder: ["/Users/sjayagop/Desktop/src","/Users/sjayagop/Desktop/test"],
                                selectByTag:'SystemTest',
                                selectByFolder:['test/functionbased'],
